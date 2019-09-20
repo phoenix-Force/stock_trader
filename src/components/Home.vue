@@ -1,6 +1,48 @@
 <template>
-<div class="container row">
-  <h2 class = "text-primary">Stock Trader</h2>
+<div class="container-fluid">
+ <div class="container-fluid pull-left">
+   <h1 class="text-center text-danger">Your Dashboard</h1>
+ </div>
+ <div class="row">
+   <div class="col-sm-6 pull-left">
+    <div class="container-fluid text-center">
+      <h3 class="text-info">Your Data</h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="text-center">Total-Funds</h1>
+        </div>
+        <div class="col-sm-6">
+          <h1 class="text-center">{{funds}}</h1>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+ </div>
+  <div class="col-sm-5 bg-dark" style="float:right">
+    <div class="container-fluid text-center">
+      <h3 class="text-info">Your Current Stocks</h3>
+    </div>
+ </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <h2 class = "text-primary">Stock Trader</h2>
 <dib class="row">
 
   <h1 class="text-dark">Your current funds is :{{funds}}</h1>
@@ -10,7 +52,7 @@
     <div class="col-sm6"><h3 class="text-info">{{stock.quan}}</h3></div>
   </div>
 
-</dib>
+</dib> -->
 
 </div>
 </template>
