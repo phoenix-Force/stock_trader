@@ -33,7 +33,7 @@ export default {
          order = {
           id:this.stock.id,
           price:this.stock.value,
-          quan:this.quantity
+          quan:parseInt(this.quantity)
         }
 
 

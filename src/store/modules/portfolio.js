@@ -4,28 +4,25 @@ const state = {
 }
 const mutations = {
   mbuyStock(state, order) {
-    const record = state.stocks.find(element => element.id == stockId);
+    const record = state.stocks.find(element => element.id == order.id);
     if (record) {
-      record.quantity += quantity
+      record.quantity += order.quan
     } else {
       state.stocks.push({
         id: order.id,
-        quantity: order.quan
+        quantity: parseInt(order.quan)
       })
     }
-    state.funds -= quantity * stockPrice
+    state.funds -= order.quan * order.price
   },
-  msellStock(state, {
-    stockId,
-    quantity,
-    stockPrice
-  }) {
-    if (record.quantity > quantity) {
-      record.quantity -= quantity
+  msellStock(state, order) {
+    const record = state.stocks.find(element => element.id == order.id);
+    if (order.quan < record.quan) {
+      record.quan -= order.quan
     } else {
       state.stocks.splice(state.stocks.indexOf(record))
     }
-    state.funds += quantity * stockPrice
+    state.funds += order.quan * order.price
 
   }
 }

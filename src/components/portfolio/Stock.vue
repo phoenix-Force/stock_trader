@@ -4,7 +4,7 @@
       <div class = "panel panel-primary" >
         <div class = "panel-heading">
           <h3 class = "panel-title font-weight-bold	 " style="color:#0f0f2d">
-            {{stock.name}}Head
+            {{stock.name}}
             <small class= "text-right font-size-8">price:({{stock.value}}|{{stock.quantity}})</small>
           </h3>
         </div>
@@ -33,11 +33,12 @@ export default {
     ]),
     sellStock(){
       const order={
-        stockId:this.stock.id,
-        stockPrice:this.stock.price,
-        quantity:this.quantity
+        id:this.stock.id,
+        price:this.stock.value,
+        quan:parseInt(this.quantity)
       }
-      this.a_sellStock()
+      console.log(order)
+      this.a_sellStock(order)
     }
   }
 
