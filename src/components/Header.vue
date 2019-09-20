@@ -15,7 +15,10 @@
       <li class="nav-item">
         <router-link class="nav-link pull-right" to=""><a>End day</a></router-link>
       </li>
-
+    </ul>
+      <div class="pull-right">
+        <h4>Funds:$$ {{funds}}</h4>
+      </div>
         <div class="dropdown pull-right">
            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">p
             <span class="caret"></span></button>
@@ -24,18 +27,22 @@
             <li><a href="#">Load</a></li>
           </ul>
         </div>
-        <div class="nav-itam" style="float:right">
-          <h4 style="float:white">Funds</h4>
-        </div>
 
-    </ul>
+
+
   </div>
 </nav>
 
 
 </template>
 <script>
+
 export default {
+  computed:{
+    funds(){
+      return this.$store.getters.funds;
+    }
+  }
 
 }
 </script>
@@ -49,6 +56,9 @@ a{
 }
 a:hover{
   color:black;
+}
+h4{
+  color:white;
 }
 
 </style>

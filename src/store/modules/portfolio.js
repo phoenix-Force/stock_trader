@@ -1,5 +1,5 @@
 const state = {
-  funds: 10000,
+  funds: 100000,
   stocks: []
 }
 const mutations = {
