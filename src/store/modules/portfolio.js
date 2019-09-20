@@ -17,8 +17,8 @@ const mutations = {
   },
   msellStock(state, order) {
     const record = state.stocks.find(element => element.id == order.id);
-    if (order.quan < record.quan) {
-      record.quan -= order.quan
+    if (order.quan < record.quantity) {
+      record.quantity -= order.quan
     } else {
       state.stocks.splice(state.stocks.indexOf(record))
     }

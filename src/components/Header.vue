@@ -24,6 +24,9 @@
             <li><a href="#">Load</a></li>
           </ul>
         </div>
+        <div class="nav-itam" style="float:right">
+          <h4 style="float:white">Funds</h4>
+        </div>
 
     </ul>
   </div>
