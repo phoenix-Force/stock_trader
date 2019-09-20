@@ -4,14 +4,14 @@
       <div class = "panel panel-primary" >
         <div class = "panel-heading">
           <h3 class = "panel-title font-weight-bold	 " style="color:#0f0f2d">
-            {{stock.name}}
-            (<small class= "text-right font-size-8">price:({{stock.value}}|{{stock.quantity}})</small>)
+            {{stock.name}}Head
+            <small class= "text-right font-size-8">price:({{stock.value}}|{{stock.quantity}})</small>
           </h3>
         </div>
         <div class = "panel-body ">
           <div class="pull-left">
             <input type="number" placeholder = "quantity" class="col-sm-8" v-model = "quantity" name="" id="">
-            <button class="btn btn-warning pull-right col-sm-3 pull-right" @click = "buy" :disabled="quantity<=0 ">Sell</button>
+            <button class="btn btn-warning pull-right col-sm-3 pull-right" @click = "sellStock" :disabled="quantity<=0 ">Sell</button>
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
   <!-- </div> -->
 </template>
 <script>
-import {mapAction} from "vuex"
+import {mapActions} from "vuex"
 export default {
   props:['stock'],
   data(){
@@ -28,7 +28,7 @@ export default {
     }
   },
   methods:{
-    ...mapAction([
+    ...mapActions([
       'a_sellStock'
     ]),
     sellStock(){

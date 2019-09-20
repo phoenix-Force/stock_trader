@@ -3,18 +3,14 @@ const state = {
   stocks: []
 }
 const mutations = {
-  mbuyStock(state, {
-    stockId,
-    quantity,
-    stockPrice
-  }) {
+  mbuyStock(state, order) {
     const record = state.stocks.find(element => element.id == stockId);
     if (record) {
       record.quantity += quantity
     } else {
       state.stocks.push({
-        id: stockId,
-        quantity: quantity
+        id: order.id,
+        quantity: order.quan
       })
     }
     state.funds -= quantity * stockPrice
@@ -37,19 +33,20 @@ const actions = {
   a_sellStock({
     commit
   }, order) {
-    commit('msellStock')
+    commit('msellStock', order)
   }
 }
 const getters = {
-  stockportfolio(state, getters) {
-    return state.stock.map((stock) => {
+  stockPortfolio(state, getters) {
+    return state.stocks.map(stock => {
       const record = getters.stocks.find(element => element.id == stock.id);
       return {
         id: stock.id,
         quantity: stock.quantity,
         name: record.name,
-        price: record.price
+        value: record.value
       }
+
     });
   },
   funds(state) {
