@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container row">
 <app-stock :key="index" v-for="(stock,index) in dStocks" :stock="stock"></app-stock>
 
 </div>

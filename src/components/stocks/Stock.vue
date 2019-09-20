@@ -41,6 +41,9 @@ export default {
       this.$store.dispatch('buyStock',order)
       console.log(order)
     }
+  },
+  computed:{
+
   }
 
 }

@@ -5,7 +5,7 @@
         <div class = "panel-heading">
           <h3 class = "panel-title font-weight-bold	 " style="color:#0f0f2d">
             {{stock.name}}
-            <small class= "text-right font-size-8">price:({{stock.value}}|{{stock.quantity}})</small>
+            <small class= "text-right font-size-8">price:({{stock.value}}|Quantity:{{stock.quantity}})</small>
           </h3>
         </div>
         <div class = "panel-body ">

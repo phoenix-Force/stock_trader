@@ -1,6 +1,7 @@
 const state = {
   funds: 100000,
-  stocks: []
+  stocks: [],
+  able: false
 }
 const mutations = {
   mbuyStock(state, order) {
@@ -13,7 +14,7 @@ const mutations = {
         quantity: parseInt(order.quan)
       })
     }
-    state.funds -= order.quan * order.price
+    state.funds -= order.quan * order.price;
   },
   msellStock(state, order) {
     const record = state.stocks.find(element => element.id == order.id);
