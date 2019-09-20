@@ -21,7 +21,7 @@ const mutations = {
     if (order.quan < record.quantity) {
       record.quantity -= order.quan
     } else {
-      state.stocks.splice(state.stocks.indexOf(record))
+      state.stocks.splice(state.stocks.indexOf(record), 1)
     }
     state.funds += order.quan * order.price
 
@@ -49,6 +49,9 @@ const getters = {
   },
   funds(state) {
     return state.funds;
+  },
+  current_stock(state) {
+    return state.stocks;
   }
 }
 export default {

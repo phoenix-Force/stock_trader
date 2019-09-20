@@ -5,13 +5,13 @@
         <div class = "panel-heading">
           <h3 class = "panel-title font-weight-bold	 " style="color:#0f0f2d">
             {{stock.name}}
-            (<small class= "text-right font-size-8">price:({{stock.value}})</small>)
+            <small class= "text-right font-size-7">(price:{{stock.value}})</small>
           </h3>
         </div>
         <div class = "panel-body ">
           <div class="pull-left">
-            <input type="number" placeholder = "quantity" class="col-sm-8" v-model = "quantity" name="" id="">
-            <button class="btn btn-warning pull-right col-sm-3 pull-right" @click = "buy" :disabled="quantity<=0 ">Buy</button>
+            <input type="number" placeholder = "quantity" class="col-sm-8" :class ="{danger:able}" v-model = "quantity" name="" id="">
+            <button class="btn btn-warning pull-right col-sm-3 pull-right" @click = "buy" :disabled="able || quantity<=0 ">Buy</button>
           </div>
         </div>
       </div>
@@ -41,15 +41,23 @@ export default {
       this.$store.dispatch('buyStock',order)
       console.log(order)
     }
-  },
-  computed:{
-
+  },computed:{
+    funds(){
+      return this.$store.getters.funds
+    },
+    able(){
+      return this.quantity * this.stock.value > this.funds
+    }
   }
 
 }
 </script>
 
 <style lang="scss" scoped>
+.danger{
+  border:1px solid red;
+  color:red;
+}
   .style{
     margin-top:5px;
     border:1 px solid black;
