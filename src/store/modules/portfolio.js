@@ -42,7 +42,7 @@ const mutations = {
 
   },
   his_clear(state) {
-    this.state.history = []
+    state.history = []
   }
 }
 const actions = {

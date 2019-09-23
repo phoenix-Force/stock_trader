@@ -15,10 +15,36 @@
           <h1 class="text-center">{{funds | currency}}</h1>
         </div>
       </div>
-      <div class="row" :key = "index" v-for="(x,index) in history">
-        {{x}}
-
+      <hr>
+      <div class="row bg-dark text-center" style="text-align:center;">
+        <h1 class = "text-warning">Transaction History</h1>
       </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4">
+          <h2 class="text-center">Name</h2>
+        </div>
+        <div class="col-sm-4">
+          <h2 class="text-center">Quantity</h2>
+        </div>
+        <div class="col-sm-4">
+          <h2 class="text-center">Total</h2>
+        </div>
+      </div>
+
+        <div class="row border border-bottom-1 bg-success" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history">
+        <div class="col-sm-4 text-dark">
+          <h1 class="text-center">{{x.Buy.name}}</h1>
+        </div>
+        <div class="col-sm-4 text-dark">
+          <h1 class="text-center">+{{x.Buy.quan }}</h1>
+        </div>
+        <div class="col-sm-4 text-dark">
+          <h1 class="text-center">-{{x.Buy.total}}</h1>
+        </div>
+      </div>
+
+
       <button class="btn btn-danger" @click = "clr_hs">Clear History</button>
     </div>
  </div>
@@ -93,7 +119,6 @@ export default {
     ]),
     clr_hs(){
       this.clear_his();
-      console.log("deleted")
     }
   }
 

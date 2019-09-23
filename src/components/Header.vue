@@ -19,8 +19,8 @@
       <div class="pull-right">
         <h4>Funds:{{funds | currency}}</h4>
       </div>
-        <div class="dropdown">
-          <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">save & Load
+        <div class="dropdown open">
+          <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown open">save & Load
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">HTML</a></li>
