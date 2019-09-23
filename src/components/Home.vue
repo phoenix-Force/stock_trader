@@ -12,17 +12,32 @@
           <h1 class="text-center">Total-Funds</h1>
         </div>
         <div class="col-sm-6">
-          <h1 class="text-center">{{funds}}</h1>
+          <h1 class="text-center">{{funds | currency}}</h1>
         </div>
       </div>
-      <div class="row">
+      <div class="row" :key = "index" v-for="(x,index) in history">
+        <div class="row" >
+          {{x}}
 
+        </div>
       </div>
+      <button class="btn btn-danger" @click = "clear_his">Clear History</button>
     </div>
  </div>
   <div class="col-sm-5 bg-dark" style="float:right">
     <div class="container-fluid text-center">
-      <h3 class="text-info">Your Current Stocks</h3>
+      <h3 class="text-primary">Your Current Stocks</h3>
+      <hr style="color:white;">
+      <div class="container-fluid">
+        <div :key= "index" v-for= "(x,index) in portf" class="row">
+          <div class="col-sm-5 pull-left">
+            <h2 class="text-info">{{x.name}}</h2>
+          </div>
+          <div class="col-sm-6 pull-right">
+            <h2 class="text-warning">{{x.quantity}}</h2>
+          </div>
+        </div>
+      </div>
     </div>
  </div>
  </div>
@@ -57,6 +72,7 @@
 </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
 export default {
   computed:{
     funds(){
@@ -64,6 +80,20 @@ export default {
     },
     cStocks(){
       return this.$store.getters.current_stock;
+    },
+    portf(){
+      return this.$store.getters.stockPortfolio;
+    },
+    history(){
+      return this.$store.getters.history;
+    }
+  },
+  methods:{
+    ...mapActions([
+      'clear_his'
+    ]),
+    clear_his(){
+      this.clear_his;
     }
   }
 

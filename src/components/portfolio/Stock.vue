@@ -34,6 +34,7 @@ export default {
     sellStock(){
       const order={
         id:this.stock.id,
+        name:this.stock.name,
         price:this.stock.value,
         quan:parseInt(this.quantity)
       }

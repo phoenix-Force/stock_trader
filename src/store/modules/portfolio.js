@@ -1,7 +1,8 @@
 const state = {
   funds: 100000,
   stocks: [],
-  able: false
+  able: false,
+  history: []
 }
 const mutations = {
   mbuyStock(state, order) {
@@ -15,6 +16,17 @@ const mutations = {
       })
     }
     state.funds -= order.quan * order.price;
+    state.history.push({
+      'Buy': [{
+          'name': order.name
+        }, {
+          'quan': order.quan
+        },
+        {
+          'total': order.quan * order.price
+        }
+      ]
+    })
   },
   msellStock(state, order) {
     const record = state.stocks.find(element => element.id == order.id);
@@ -23,8 +35,22 @@ const mutations = {
     } else {
       state.stocks.splice(state.stocks.indexOf(record), 1)
     }
-    state.funds += order.quan * order.price
+    state.funds += order.quan * order.price;
+    state.history.push({
+      'sell': [{
+          'name': order.name
+        }, {
+          'quan': order.quan
+        },
+        {
+          'total': order.quan * order.price
+        }
+      ]
+    })
 
+  },
+  his_clear(state) {
+    this.state.history.splice(0, history.length)
   }
 }
 const actions = {
@@ -32,6 +58,11 @@ const actions = {
     commit
   }, order) {
     commit('msellStock', order)
+  },
+  clear_his({
+    commit
+  }) {
+    commit('his_clear');
   }
 }
 const getters = {
@@ -52,6 +83,9 @@ const getters = {
   },
   current_stock(state) {
     return state.stocks;
+  },
+  history(state) {
+    return state.history;
   }
 }
 export default {

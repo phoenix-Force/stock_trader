@@ -7,8 +7,10 @@ const mutations = {
   setsStock(state, stocks) {
     state.stocks = stocks
   },
-  'RND_STOCKS'(satate) {
-
+  'rnd_stock'(state) {
+    stocks.forEach((stock) => {
+      stock.value = Math.round(stock.value * (1 + Math.random() - 0.5));
+    })
   }
 }
 const actions = {
@@ -26,7 +28,7 @@ const actions = {
   randomisestock({
     commit
   }) {
-    commit('RND_STOCKS')
+    commit('rnd_stock')
   }
 }
 const getters = {
