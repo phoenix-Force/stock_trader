@@ -21,28 +21,45 @@
       </div>
       <hr>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+          <h2 class="text-center">Action</h2>
+        </div>
+        <div class="col-sm-3">
           <h2 class="text-center">Name</h2>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <h2 class="text-center">Quantity</h2>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <h2 class="text-center">Total</h2>
         </div>
       </div>
 
-        <div class="row border border-bottom-1 bg-success" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history">
-        <div class="col-sm-4 text-dark">
-          <h1 class="text-center">{{x.Buy.name}}</h1>
+        <div class="row border border-bottom-1 bg-success" :class = "{'background-color':cls}" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history">
+          <div class="col-sm-3 text-dark">
+            <h1 class="text-center">{{Object.keys(x)[0]}}</h1>
+          </div>
+          <div class="col-sm-3 text-dark">
+            <h1 class="text-center">{{x[Object.keys(x)[0]].name}}</h1>
+          </div>
+          <div class="col-sm-3 text-dark">
+            <h1 class="text-center">{{x[Object.keys(x)[0]].quan }}</h1>
+          </div>
+          <div class="col-sm-3 text-dark">
+            <h1 class="text-center">{{x[Object.keys(x)[0]].total}}</h1>
+          </div>
         </div>
-        <div class="col-sm-4 text-dark">
-          <h1 class="text-center">+{{x.Buy.quan }}</h1>
-        </div>
-        <div class="col-sm-4 text-dark">
-          <h1 class="text-center">-{{x.Buy.total}}</h1>
-        </div>
-      </div>
+        <!-- <div class="row border border-bottom-1 bg-danger" :class = "{'background-color':cls}" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history" v-else>
+          <div class="col-sm-4 text-dark">
+            <h1 class="text-center">{{x.Sell.name}}</h1>
+          </div>
+          <div class="col-sm-4 text-dark">
+            <h1 class="text-center">+{{x.Sell.quan }}</h1>
+          </div>
+          <div class="col-sm-4 text-dark">
+            <h1 class="text-center">-{{x.Sell.total}}</h1>
+          </div>
+        </div> -->
 
 
       <button class="btn btn-danger" @click = "clr_hs">Clear History</button>
@@ -98,6 +115,11 @@
 <script>
 import {mapActions} from 'vuex'
 export default {
+  data(){
+    return{
+      cls:false
+    }
+  },
   computed:{
         history(){
       return this.$store.getters.history;
