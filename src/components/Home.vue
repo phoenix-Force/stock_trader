@@ -16,12 +16,10 @@
         </div>
       </div>
       <div class="row" :key = "index" v-for="(x,index) in history">
-        <div class="row" >
-          {{x}}
+        {{x}}
 
-        </div>
       </div>
-      <button class="btn btn-danger" @click = "clear_his">Clear History</button>
+      <button class="btn btn-danger" @click = "clr_hs">Clear History</button>
     </div>
  </div>
   <div class="col-sm-5 bg-dark" style="float:right">
@@ -75,6 +73,9 @@
 import {mapActions} from 'vuex'
 export default {
   computed:{
+        history(){
+      return this.$store.getters.history;
+    },
     funds(){
       return this.$store.getters.funds;
     },
@@ -83,17 +84,16 @@ export default {
     },
     portf(){
       return this.$store.getters.stockPortfolio;
-    },
-    history(){
-      return this.$store.getters.history;
     }
+
   },
   methods:{
     ...mapActions([
       'clear_his'
     ]),
-    clear_his(){
-      this.clear_his;
+    clr_hs(){
+      this.clear_his();
+      console.log("deleted")
     }
   }
 

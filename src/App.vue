@@ -3,7 +3,9 @@
   <app-header></app-header>
   <div class="row">
     <div class="col-xl-12">
-      <router-view></router-view>
+      <transition name= "slide" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 
@@ -26,5 +28,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .slide-enter-active{
+    animation: slide-in 100ms ease-out forwards;
+  }
+  .slide-leave-active{
+    animation: slide-out 100ms ease-out forwards;
+  }
+  @keyframes slide-in {
+    from{
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to{
+      transform: translateY(0 px);
+      opacity: 1;
+    };
+  }
+   @keyframes slide-out {
+    from{
+      transform: translateY(0 px);
+      opacity: 1;
+    }
+    to{
+      transform: translateY(-50 px);
+      opacity: 0;
+    }
+   }
 </style>

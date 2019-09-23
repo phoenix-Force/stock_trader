@@ -17,16 +17,12 @@ const mutations = {
     }
     state.funds -= order.quan * order.price;
     state.history.push({
-      'Buy': [{
-          'name': order.name
-        }, {
-          'quan': order.quan
-        },
-        {
-          'total': order.quan * order.price
-        }
-      ]
-    })
+      'Buy': {
+        'name': order.name,
+        'quan': order.quan,
+        'total': order.quan * order.price
+      }
+    });
   },
   msellStock(state, order) {
     const record = state.stocks.find(element => element.id == order.id);
@@ -37,20 +33,16 @@ const mutations = {
     }
     state.funds += order.quan * order.price;
     state.history.push({
-      'sell': [{
-          'name': order.name
-        }, {
-          'quan': order.quan
-        },
-        {
-          'total': order.quan * order.price
-        }
-      ]
+      'Sell': {
+        'name': order.name,
+        'quan': order.quan,
+        'total': order.quan * order.price
+      }
     })
 
   },
   his_clear(state) {
-    this.state.history.splice(0, history.length)
+    this.state.history = []
   }
 }
 const actions = {
