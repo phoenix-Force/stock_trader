@@ -35,8 +35,9 @@
         </div>
       </div>
 
-        <div class="row border border-bottom-1 bg-success" :class = "{'background-color':cls}" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history">
-          <div class="col-sm-3 text-dark">
+        <div class="container border border-bottom-1 bg-success" :class = "{'background-color':cls}" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history">
+          <div class="row" :style="{'background-color':Object.keys(x)[0] =='Buy'?'#CCFFDD':'#FF99AA'}">
+            <div class="col-sm-3 text-dark">
             <h1 class="text-center">{{Object.keys(x)[0]}}</h1>
           </div>
           <div class="col-sm-3 text-dark">
@@ -47,6 +48,7 @@
           </div>
           <div class="col-sm-3 text-dark">
             <h1 class="text-center">{{x[Object.keys(x)[0]].total}}</h1>
+          </div>
           </div>
         </div>
         <!-- <div class="row border border-bottom-1 bg-danger" :class = "{'background-color':cls}" style= "border-bottom:1 px solid black;" :key = "index" v-for="(x,index) in history" v-else>
